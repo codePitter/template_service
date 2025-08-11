@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TU BARBERÍA • Reservá por WhatsApp + Agenda</title>
+    <meta name="description" content="Landing oscura y elegante para barbería. Reservas por WhatsApp y agendado automático en Google Calendar (Apps Script)." />
+    <meta name="theme-color" content="#0b0b0b" />
+
+    <!-- Open Graph / Social -->
+    <meta property="og:title" content="TU BARBERÍA • Reservá tu turno" />
+    <meta property="og:description" content="Cortes, fades y barbas. Reservá en 1 minuto por WhatsApp." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/assets/img/og-cover.jpg" />
+    <meta property="og:url" content="https://tudominio.com/" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Favicon pack -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
+    <link rel="manifest" href="/assets/manifest.webmanifest">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg sticky-top py-3">
+        <div class="container">
+            <a class="navbar-brand" href="#">TU BARBERÍA</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="nav">
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3">
+                    <li class="nav-item"><a class="nav-link" href="#servicios">Servicios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#galeria">Galería</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#turnos">Reservar</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#ubicacion">Ubicación</a></li>
+                    <li class="nav-item"><a class="btn btn-sm btn-brand ms-lg-2" href="#turnos">Pedir turno</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero d-flex align-items-center">
+        <div class="container hero-inner">
+            <div class="row align-items-center justify-content-between g-4">
+                <div class="col-lg-6 prev-div">
+                    <div class="p-4 p-md-5 glass">
+                        <div class="d-flex align-items-center gap-2 mb-2">
+                            <span class="badge-soft">Clásico · Fade · Barbas</span>
+                        </div>
+                        <h1 class="mb-3">Estilo impecable, <span style="color:var(--brand)">sin vueltas</span></h1>
+                        <p class="lead mb-4">Reservá tu turno en 1 minuto. Barberos profesionales, productos premium y un ambiente pensado para vos.</p>
+                        <div class="d-flex flex-wrap gap-2">
+                            <a class="btn btn-brand" href="#turnos">Reservar ahora</a>
+                            <a class="btn btn-ghost btn-outline-light" href="#servicios">Ver servicios</a>
+                        </div>
+                        <div class="mt-3 small" style="color:#cfcfcf">Hoy abierto · Turnos online · Pago con tarjeta / transferencia</div>
+                    </div>
+                </div>
+                <div class="col-lg-5 d-none d-lg-block">
+                    <img class="img-fluid rounded-4 shadow target-img" alt="Barbero trabajando" src="/assets/img/barbero.jpg" />
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- SERVICIOS -->
+    <!-- Ejemplo de cards de servicios y precios con imágenes -->
+    <section id="servicios">
+        <div class="container">
+            <div class="row align-items-end g-3 mb-4">
+                <div class="col-md-8">
+                    <h2 class="mb-1">Servicios y precios</h2>
+                    <p class="text-muted">Elegí tu opción y reservá en 1 minuto.</p>
+                </div>
+                <div class="col-md-4 text-md-end"><a href="#turnos" class="btn btn-brand">Pedir turno</a></div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-sm-6 col-lg-4 reveal">
+                    <article class="card-service h-100 p-0">
+                        <img src="assets/img/corte.jpg" alt="Corte + Perfilado" class="img-fluid" style="width:100%;height:220px;object-fit:cover;">
+                        <div class="p-4">
+                            <h3 class="h5">Corte + Perfilado</h3>
+                            <p class="small text-muted">Asesoramiento y estilo según tu rostro.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="price h5 mb-0">$7.500</span>
+                                <button class="btn btn-sm btn-outline-primary" data-service="Corte + Perfilado" onclick="prefill('Corte + Perfilado')">Elegir</button>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-sm-6 col-lg-4 reveal">
+                    <article class="card-service h-100 p-0">
+                        <img src="assets/img/barba.jpg" alt="Barba" class="img-fluid" style="width:100%;height:220px;object-fit:cover;">
+                        <div class="p-4">
+                            <h3 class="h5">Barba</h3>
+                            <p class="small text-muted">Incluye diagnóstico de cabello.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="price h5 mb-0">$5.000</span>
+                                <button class="btn btn-sm btn-outline-primary" data-service="Color / Mechas" onclick="prefill('Color / Mechas')">Elegir</button>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-sm-6 col-lg-4 reveal">
+                    <article class="card-service h-100 p-0">
+                        <img src="assets/img/corte-barba.jpg" alt="Servicio a Domicilio" class="img-fluid" style="width:100%;height:220px;object-fit:cover;">
+                        <div class="p-4">
+                            <h3 class="h5">Corte + Perfilado + Barba</h3>
+                            <p class="small text-muted">Ahorrá con el servicio completo.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="price h5 mb-0">$10.000</span>
+                                <button class="btn btn-sm btn-outline-primary" data-service="Servicio a Domicilio" onclick="prefill('Servicio Completo')">Elegir</button>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- GALERÍA -->
+    <section id="galeria" class="alt">
+        <div class="container">
+            <div class="row align-items-end g-3 mb-4">
+                <div class="col-md-8">
+                    <h2 class="mb-1">Galería de clientes</h2>
+                    <p class="text-muted">Algunos de nuestros últimos cortes y arreglos de barba.</p>
+                </div>
+                <div class="col-md-4 text-md-end"><a href="#turnos" class="btn btn-brand">Quiero un turno</a></div>
+            </div>
+
+            <div class="row g-3">
+                <div class="col-6 col-md-4 col-lg-3">
+                    <article class="gallery-card">
+                        <button class="p-0 border-0 bg-transparent w-100" data-gallery data-src="assets/img/fade.png" data-caption="Fade bajo + línea definida">
+                            <div class="thumb"><img loading="lazy" alt="Fade bajo + línea definida" src="assets/img/fade.png"><span class="gallery-chip">Fade</span></div>
+                        </button>
+                    </article>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3">
+                    <article class="gallery-card">
+                        <button class="p-0 border-0 bg-transparent w-100" data-gallery data-src="assets/img/classic.png" data-caption="Corte clásico + peine y tijera">
+                            <div class="thumb"><img loading="lazy" alt="Corte clásico + peine y tijera" src="assets/img/classic.png"><span class="gallery-chip">Clásico</span></div>
+                        </button>
+                    </article>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3">
+                    <article class="gallery-card">
+                        <button class="p-0 border-0 bg-transparent w-100" data-gallery data-src="assets/img/barbalarga.png" data-caption="Barba larga perfilada">
+                            <div class="thumb"><img loading="lazy" alt="Barba larga perfilada" src="assets/img/barbalarga.png"><span class="gallery-chip">Barba</span></div>
+                        </button>
+                    </article>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3">
+                    <article class="gallery-card">
+                        <button class="p-0 border-0 bg-transparent w-100" data-gallery data-src="assets/img/fade2.jpg" data-caption="Fade medio + texturizado">
+                            <div class="thumb"><img loading="lazy" alt="Fade medio texturizado" src="assets/img/fade2.jpg"><span class="gallery-chip">Fade</span></div>
+                        </button>
+                    </article>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3">
+                    <article class="gallery-card">
+                        <button class="p-0 border-0 bg-transparent w-100" data-gallery data-src="assets/img/barba1.jpg" data-caption="Barba corta con degradado">
+                            <div class="thumb"><img loading="lazy" alt="Barba corta degradado" src="assets/img/barba1.jpg"><span class="gallery-chip">Barba</span></div>
+                        </button>
+                    </article>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3">
+                    <article class="gallery-card">
+                        <button class="p-0 border-0 bg-transparent w-100" data-gallery data-src="assets/img/classic1.jpg" data-caption="Corte clásico peine y tijera">
+                            <div class="thumb"><img loading="lazy" alt="Corte clásico peine y tijera" src="assets/img/classic1.jpg"><span class="gallery-chip">Clásico</span></div>
+                        </button>
+                    </article>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3">
+                    <article class="gallery-card">
+                        <button class="p-0 border-0 bg-transparent w-100" data-gallery data-src="assets/img/fade3.jpg" data-caption="Fade alto + textura">
+                            <div class="thumb"><img loading="lazy" alt="Fade alto con textura" src="assets/img/fade3.jpg"><span class="gallery-chip">Fade</span></div>
+                        </button>
+                    </article>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3">
+                    <article class="gallery-card">
+                        <button class="p-0 border-0 bg-transparent w-100" data-gallery data-src="assets/img/barba2.jpg" data-caption="Perfilado barba + navaja">
+                            <div class="thumb"><img loading="lazy" alt="Perfilado de barba con navaja" src="assets/img/barba2.jpg"><span class="gallery-chip">Barba</span></div>
+                        </button>
+                    </article>
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <a class="btn btn-ghost btn-outline-light" href="#turnos">Reservar mi corte</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESERVAS -->
+    <section id="turnos">
+        <div class="container">
+            <div class="row g-5 align-items-start">
+                <div class="col-lg-6 reveal">
+                    <h2 class="mb-3">Reservá tu turno</h2>
+                    <div class="alert alert-inline" id="alert" role="alert"></div>
+                    <form id="formTurno" class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="nombre" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Teléfono (opcional)</label>
+                            <input type="tel" class="form-control" id="telefono" placeholder="Ej: 341-555-1234">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Servicio</label>
+                            <select class="form-select" id="servicio" required>
+                                <option value="Corte Clásico / Fade">Corte Clásico / Fade</option>
+                                <option value="Arreglo de Barba">Arreglo de Barba</option>
+                                <option value="Corte + Barba" selected>Corte + Barba</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">Fecha</label>
+                            <input type="date" class="form-control" id="fecha" required>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">Hora</label>
+                            <input type="time" class="form-control" id="hora" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Duración</label>
+                            <select class="form-select" id="duracion">
+                                <option value="30">30 min</option>
+                                <option value="45">45 min</option>
+                                <option value="60" selected>60 min</option>
+                                <option value="90">90 min</option>
+                            </select>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label">Comentarios (opcional)</label>
+                            <textarea class="form-control" id="coment" rows="3" placeholder="Ej: prefiero la tarde, degradado medio…"></textarea>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="1" id="agendar" checked>
+                                <label class="form-check-label" for="agendar"> Agendar automáticamente en el Google Calendar del local</label>
+                            </div>
+                            <small class="text-muted">Requiere configurar el backend con Google Apps Script.</small>
+                        </div>
+
+                        <div class="col-12 d-grid d-md-flex gap-2">
+                            <button type="submit" class="btn btn-brand">Confirmar por WhatsApp</button>
+                            <button type="button" class="btn btn-outline-light" id="btnGoogleLink">Link de Google Calendar</button>
+                            <button type="reset" class="btn btn-outline-light">Limpiar</button>
+                        </div>
+                        <div class="form-text text-muted">Se abrirá WhatsApp con tu solicitud. Si está activado, también se intentará agendar el turno en el Calendar del dueño.</div>
+                    </form>
+                </div>
+                <div class="col-lg-5 offset-lg-1 reveal" id="ubicacion">
+                    <h2 class="mb-3">Ubicación y horarios</h2>
+                    <ul class="list-unstyled schedule mb-4">
+                        <li><span>Lunes a Viernes</span><span>10:00–13:00 · 15:00–20:00</span></li>
+                        <li><span>Sábados</span><span>10:00–14:00</span></li>
+                        <li><span>Domingos</span><span>Cerrado</span></li>
+                    </ul>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2759.8550623523893!2d-60.673076925036334!3d-32.93913347150792!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b7ab573d371547%3A0x96f8651907c376b1!2sSANTA%20FE%20y%20CAFFERATA!5e1!3m2!1ses-419!2sar!4v1754940177945!5m2!1ses-419!2sar" width="440" height="375" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>                    <div class="small text-muted mt-3">Aceptamos efectivo, transferencia y tarjetas por Mercado Pago.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIOS / SELLOS -->
+    <section class="alt">
+        <div class="container">
+            <div class="row g-4 align-items-center">
+                <div class="col-lg-5">
+                    <h2 class="mb-3">Lo que dicen los clientes</h2>
+                    <p class="text-muted">“Me hicieron el mejor fade de la ciudad.” · “Atención de primera, vuelvo seguro.”</p>
+                    <div class="d-flex gap-2 flex-wrap">
+                        <span class="badge-soft">Higiene garantizada</span>
+                        <span class="badge-soft">Productos premium</span>
+                        <span class="badge-soft">+500 turnos/mes</span>
+                    </div>
+                </div>
+                <div class="col-lg-7 d-none d-lg-block">
+                    <img class="img-fluid rounded-4" alt="Butacas de barbería" src="assets/img/image1.png" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODAL GALERÍA -->
+    <div class="modal fade" id="galleryModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content" style="background:#111; border:1px solid rgba(255,255,255,.1)">
+                <div class="modal-header" style="border-color:rgba(255,255,255,.08)">
+                    <h5 class="modal-title">Galería</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <img id="gm-img" alt="Corte" class="img-fluid rounded-3" />
+                    <div id="gm-cap" class="small text-muted mt-2"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <h5 class="mb-2">TU BARBERÍA</h5>
+                    <p class="mb-1">Cortes y barbas de calidad. Reservas online o por WhatsApp.</p>
+                    <div class="small">© <span id="y"></span> – Todos los derechos reservados</div>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a class="me-3" href="#servicios">Servicios</a>
+                    <a class="me-3" href="#turnos">Reservar</a>
+                    <a href="https://wa.me/5493410000000" target="_blank" rel="noopener">WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float -->
+    <a class="wa-float" href="https://wa.me/5493410000000?text=Hola!%20Quiero%20pedir%20un%20turno" target="_blank" rel="noopener" aria-label="Chatear por WhatsApp">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"> <span>Pedir turno</span>
+    </a>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/main.js" defer></script>
+
+    <!-- ========================= BACKEND (copiar/pegar en Google Apps Script) =========================
+      1) Ir a https://script.google.com/  > Nuevo proyecto > pegar este código > Servicios: Calendar activado por defecto.
+      2) Publicar > Implementar como aplicación web > "Cualquiera con el enlace" > Copiar URL y pegarla en GOOGLE_APPS_SCRIPT_URL arriba.
+      3) El script corre con tu cuenta y crea eventos en tu Calendar por defecto.
+
+      // Código Google Apps Script (Calendar)
+      function doPost(e){
+        try{
+          var data = JSON.parse(e.postData.contents);
+          var tz = data.timezone || 'America/Argentina/Cordoba';
+          var startString = data.date + 'T' + data.time + ':00';
+          var start = new Date(startString);
+          var end = new Date(start.getTime() + (Number(data.durationMinutes)||60)*60000);
+          var title = (data.service||'Turno') + ' – ' + (data.name||'Cliente');
+          var desc = 'Cliente: ' + (data.name||'') + '
+    Tel: ' + (data.phone||'') + '
+    Comentarios: ' + (data.comments||'');
+          var options = { description: desc, location: data.location||'', guests: [], sendInvites: false};
+          var evt = CalendarApp.getDefaultCalendar().createEvent(title, start, end, options);
+          return ContentService.createTextOutput(JSON.stringify({ok:true, eventId: evt.getId()}))
+            .setMimeType(ContentService.MimeType.JSON)
+            .setHeader('Access-Control-Allow-Origin','*');
+        }catch(err){
+          return ContentService.createTextOutput(JSON.stringify({ok:false, error:String(err)}))
+            .setMimeType(ContentService.MimeType.JSON)
+            .setHeader('Access-Control-Allow-Origin','*');
+        }
+      }
+
+      function doGet(){
+        return ContentService.createTextOutput('OK').setMimeType(ContentService.MimeType.TEXT).setHeader('Access-Control-Allow-Origin','*');
+      }
+      ================================================================================================ -->
+</body>
+</html>
